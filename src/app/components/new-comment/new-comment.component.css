@@ -1,0 +1,40 @@
+.comment {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(200, 205, 211);
+  align-items: center;
+}
+
+.container {
+  margin: 15px;
+  width: 750px;
+  height: 150px;
+  background-color: rgb(251, 251, 251);
+  border-radius: 8px;
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.rpl-text {
+  width: 500px;
+  border-radius: 5px;
+}
+
+.confirmbtn {
+  height: 30px;
+  width: 90px;
+  border: none;
+  background-color: blue;
+  border-radius: 5px;
+  color: white;
+}

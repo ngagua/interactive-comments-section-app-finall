@@ -1,0 +1,7 @@
+<div *ngFor="let comment of commentslist" class="comments">
+  <app-comment [comment]="comment" [currentUser]="currentUser" (onScore)="onScoreHandler($event)"
+    (onScoreReply)="onScoreReplyHandler($event)" (onDeleteComment)="deleteCommenthandler($event)"
+    (onDeleteReply)="deleteReplyhandler($event)" (onReply)="onReplyhandler($event)" (onUpdate)="onUpdateHandler($event)"
+    (onReplyUpdate)="onReplyUpdatehandler($event)" (onReplyToreply)="onReplyToreplyHandler($event)"></app-comment>
+</div>
+<app-new-comment (onComment)="onCommenthandler($event)" [currentUser]="currentUser"></app-new-comment>

@@ -1,0 +1,13 @@
+<div class="replies">
+  <div class="container">
+    <div class="user-info">
+      <div class="user">
+        <img class="avatars" src="{{ currentUser?.image?.png }}" />
+        <span>{{ currentUser?.username }}</span>
+      </div>
+
+      <textarea class="rpl-text" [(ngModel)]="content"></textarea>
+      <button class="confirmbtn" (click)="addReply()">reply</button>
+    </div>
+  </div>
+</div>

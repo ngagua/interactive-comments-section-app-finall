@@ -1,0 +1,59 @@
+<div class="comments" id="{{ comment.id }}">
+  <div class="comments__container">
+    <div class="comments_likes">
+      <button class="plus" (click)="changeScore('plus')">+</button>
+      <span class="post-scores">{{ comment.score }}</span>
+      <button class="minus" (click)="changeScore('minus')">-</button>
+    </div>
+    <div class="comments__header">
+      <div class="user-info">
+        <div class="comments__avatar">
+          <img class="avatars" src="{{ comment.user.image.png }}" />
+        </div>
+        <div class="comments__username">
+          <span>{{ comment.user.username }} </span>
+        </div>
+        <div class="comments__date">
+          <span>{{ comment.createdAt }}</span>
+        </div>
+      </div>
+      <div class="comments__buttons">
+        <div class="replybtn" *ngIf="comment.user !== currentUser">
+          <img class="replyicon" src="/assets/images/icon-reply.svg" />
+          <button class="btn" (click)="toggleReply()">reply</button>
+        </div>
+        <div *ngIf="comment.user == currentUser" class="currentuser-btn">
+          <div class="delete-btn">
+            <img class="replyicon" src="/assets/images/icon-delete.svg" />
+            <button class="btn" (click)="onDelete()">delete</button>
+          </div>
+          <div class="edit-btn">
+            <img class="replyicon" src="/assets/images/icon-edit.svg" />
+            <button class="btn" (click)="toggleEdit()">Edit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comments__content">
+      <div *ngIf="showEdit" class="edit-content">
+        <textarea [(ngModel)]="comment.content" class="rpl-text">
+          <span>@{{comment.replyingTo}}</span>
+          {{comment.content}}</textarea>
+        <button class="confirmbtn" (click)="toggleUpdate()">UPDATE</button>
+      </div>
+      <p *ngIf="!showEdit">
+
+        {{ comment.content }}
+      </p>
+    </div>
+  </div>
+</div>
+<app-new-replies *ngIf="isReply" (onReply)="onReplyhandler($event)" [comment]="comment" [currentUser]="currentUser"
+  [reply]="reply">
+</app-new-replies>
+<app-replies *ngFor="let item of comment.replies" [currentUser]="currentUser" [comment]="comment" [reply]="item"
+  (onScoreReply)="onScoreReplyHandler($event)" (onDeleteReply)="onDeleteReplyHandler($event)"
+  (ontoggleReply)="toggleReply()" (onReplyUpdate)="onReplyUpdatehandler($event)"
+  (onReplyToreply)="onReplyToreplyHandler($event)">
+</app-replies>

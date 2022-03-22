@@ -1,0 +1,54 @@
+<div class="replies" id="{{ reply?.id }}">
+  <div class="container">
+    <div class="likes">
+      <button class="plus reply-plus" (click)="changeReplyScore('plus')">
+        +
+      </button>
+      <span>{{ reply?.score }}</span>
+      <button class="minus reply-minus" (click)="changeReplyScore('minus')">
+        -
+      </button>
+    </div>
+    <div class="header">
+      <div class="user-info">
+        <div class="avatar1">
+          <img class="avatars" src="{{ reply?.user?.image?.png }}" />
+        </div>
+        <div class="username1">
+          <span>{{ reply?.user?.username }} </span>
+        </div>
+        <div class="date1">
+          <span>{{ reply?.createdAt }}</span>
+        </div>
+      </div>
+      <div class="replybtn" *ngIf="reply.user.username !== currentUser.username">
+        <img class="replyicon" src="/assets/images/icon-reply.svg" />
+        <button class="btn" (click)="toggleReply()">reply</button>
+      </div>
+      <div *ngIf="reply.user.username == currentUser.username" class="currentuser-btn">
+        <div class="replybtn">
+          <img class="replyicon" src="/assets/images/icon-delete.svg" />
+          <button class="btn" (click)="onDelete()">delete</button>
+        </div>
+        <div class="replybtn">
+          <img class="replyicon" src="/assets/images/icon-edit.svg" />
+          <button class="btn" (click)="toggleUpdate()">Edit</button>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <div *ngIf="showEdit" class="edit-content">
+        <textarea [(ngModel)]="reply.content" class="rpl-text">{{
+          reply.content
+        }}</textarea>
+        <button class="confirmbtn" (click)="toggleUpdate()">UPDATE</button>
+      </div>
+      <span *ngIf="!showEdit">@{{reply.replyingTo}} {{ reply?.content }}</span>
+    </div>
+  </div>
+</div>
+
+
+<app-new-reply-to-reply [currentUser]="currentUser" [comment]="comment" [reply]="reply"
+  (onReplyToReply)="onReplyToreplyHandler($event)" *ngIf="showReply">
+</app-new-reply-to-reply>

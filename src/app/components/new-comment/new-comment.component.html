@@ -1,0 +1,17 @@
+<div class="comment">
+  <div class="container">
+    <div class="user-info">
+      <div class="user">
+        <img class="avatars" src="{{ currentUser?.image?.png }}" />
+        <span>{{ currentUser?.username }}</span>
+      </div>
+
+      <textarea
+        class="rpl-text"
+        placeholder="Add a comment..."
+        [(ngModel)]="content"
+      ></textarea>
+      <button class="confirmbtn" (click)="addComment()">send</button>
+    </div>
+  </div>
+</div>

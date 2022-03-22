@@ -1,0 +1,46 @@
+.replies {
+  padding-left: 60px;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(200, 205, 211);
+  }
+  
+  .container {
+    margin: 15px;
+    width: 690px;
+    height: 150px;
+    border-radius: 8px;
+    margin: 20px;
+    background-color: rgb(240, 252, 255);
+    border-radius: 8px;
+  }
+  
+  .user-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+  }
+  
+  .user {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .rpl-text {
+    width: 420px;
+  }
+  
+  .confirmbtn {
+    height: 30px;
+    width: 90px;
+    border: none;
+    background-color: blue;
+    border-radius: 5px;
+    color: white;
+  }
+  
+  .rpl-text {
+    border-radius: 5px;
+  }
+  
